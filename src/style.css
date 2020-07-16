@@ -1,0 +1,18 @@
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin: 28px auto;
+}
+
+body {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    min-width: 400px;
+    border-right: 2px solid cornflowerblue;
+    border-left: 2px solid cornflowerblue;
+    height: 100vh;
+}
