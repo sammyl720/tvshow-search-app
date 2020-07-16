@@ -1,18 +1,18 @@
 import React from 'react'
 import './style.css'
-import ReactDOM from 'react-dom'
+import Header from './components/Header'
 
 type props = {
   /** A Greeting To Display */
   greeting: string;
-  /** Css Classname to use */
-  className?: string;
 }
 
 
-const App = (props: props) => {
+const App = (props: props): React.ReactElement => {
   return (
-    <h1 className={props.className || 'title'}>{props.greeting}</h1>
+    <div>
+      <Header title={props.greeting} />
+    </div>
   )
 }
 export default App

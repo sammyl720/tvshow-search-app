@@ -12,7 +12,23 @@ body {
     justify-content: center;
     width: 80%;
     min-width: 400px;
-    border-right: 2px solid cornflowerblue;
-    border-left: 2px solid cornflowerblue;
+    border-right: 2px solid rgb(15, 23, 37);
+    border-left: 2px solid rgb(15, 23, 37);
     height: 100vh;
+    position: relative;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(15, 23, 37);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header-title {
+    font-size: 34px;
+    color: aliceblue;
 }
