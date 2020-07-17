@@ -1,34 +1,76 @@
-.title {
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin: 28px auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body {
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    min-width: 400px;
-    border-right: 2px solid rgb(15, 23, 37);
-    border-left: 2px solid rgb(15, 23, 37);
-    height: 100vh;
+.contain {
     position: relative;
 }
 
-.header {
-    text-align: center;
-    padding: 20px;
-    background-color: rgb(15, 23, 37);
+.contain::after {
+    content: '....';
+    font-size: 16px;
+    font-weight: bold;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    bottom: -20px;
+    right: -20px;
 }
 
-.header-title {
-    font-size: 34px;
-    color: aliceblue;
+
+/* loader */
+
+.loader {
+    display: flex;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    animation: 600ms swing infinite alternate;
+}
+
+.dot:nth-child(1) {
+    background: red;
+    animation-delay: 0s;
+    top: 0;
+    left: 0;
+}
+
+.dot:nth-child(2) {
+    background: orange;
+    animation-delay: 200ms;
+    top: 0;
+    left: 25%;
+}
+
+.dot:nth-child(3) {
+    background: green;
+    animation-delay: 400ms;
+    top: 0;
+    left: 50%;
+}
+
+.dot:nth-child(4) {
+    background: blue;
+    animation-delay: 600ms;
+    top: 0;
+    left: 75%;
+}
+
+@keyframes swing {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(20px);
+    }
 }

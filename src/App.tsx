@@ -1,7 +1,8 @@
 import React from 'react'
 import './style.css'
-import Header from './components/Header'
-
+import SearchBar from './components/SearchBar'
+import TvProvider from './context/TvContext/TvProvider'
+import EpisodeList from './components/EpisodeList'
 type props = {
   /** A Greeting To Display */
   greeting: string;
@@ -10,9 +11,10 @@ type props = {
 
 const App = (props: props): React.ReactElement => {
   return (
-    <div>
-      <Header title={props.greeting} />
-    </div>
+    <TvProvider>
+      <SearchBar />
+      <EpisodeList />
+    </TvProvider>
   )
 }
 export default App
