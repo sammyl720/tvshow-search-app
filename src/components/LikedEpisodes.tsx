@@ -1,29 +1,26 @@
-import React, { useContext, Fragment, useEffect } from 'react'
-import Context, { IContext } from '../context/TvContext/TvContext'
-import Loader from './Loader'
+import React, { useEffect, useContext } from 'react'
+import { Grid, Card, CardMedia, ListItemText, CardContent, Button, CardActions, Typography, List, ListItem, } from '@material-ui/core'
 import { Favorite } from '@material-ui/icons'
-import { IData, IEpisode } from '../context/TvContext/TvReducer'
-import { Card, CardActions, CardMedia, CardContent, Typography ,Grid, List, ListItem, ListItemText, Button  } from '@material-ui/core'
+import Context, { IContext } from '../context/TvContext/TvContext'
+import { IEpisode } from '../context/TvContext/TvReducer'
 import episodeIsLiked from '../utils/episodeIsLiked'
-const EpisodeList: React.FC = (): React.ReactElement => {
-  const { state: { results, loading, liked }, likeShow, removeLikeShow } : IContext = useContext(Context)
 
- 
+function LikedEpisodes(): React.ReactElement {
+  const { state: { liked }, removeLikeShow, likeShow, setLikedShows } =  useContext<IContext>(Context)
   useEffect(() => {
-    console.log('loading: ' + loading)
-    loading && ('loading...')
-  }, [loading])
-
-  if (loading) {
-    console.log('LOADING')
-    return <Loader />
-  }
-  if (!results) {
-    return <h4 style={{ textAlign: 'center', margin: '12px auto' }}>Search for your favorite tv show</h4>
-  }
-
-  const renderResults = (data: IData ) => {
-    return data._embedded.episodes.map((episode: IEpisode): React.ReactFragment => {
+    let likedShows: IEpisode[]| null;
+    try {
+      likedShows= JSON.parse(window.localStorage.getItem('likedShows')) || null
+      if (likedShows) {
+        // likedShows.push(episode)
+        setLikedShows(likedShows)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }, [])
+  const renderResults = ( episodes: IEpisode[] ) => {
+    return episodes.map((episode: IEpisode): React.ReactFragment => {
       return (
           <Grid key={episode.id} style={{ margin: 'auto'}} item xs={12} sm={12} md={5} lg={3}>
             <Card style={{ marginTop: '12px'}}>
@@ -79,11 +76,11 @@ const EpisodeList: React.FC = (): React.ReactElement => {
     <div>
       <div style={{ margin: 'auto', width: '90%', minWidth: '440px', padding: '12px' }}>
           <Grid container spacing={1}>
-          {renderResults(results.data)}
+          {renderResults(liked)}
           </Grid>
       </div>
     </div>
   )
 }
 
-export default EpisodeList
+export default LikedEpisodes

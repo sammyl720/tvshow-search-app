@@ -4,6 +4,42 @@
     box-sizing: border-box;
 }
 
+.header {
+    position: relative;
+    top: 0;
+    margin: auto;
+    width: 80%;
+    min-width: 440px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: rgb(0, 0, 29);
+}
+
+.navigation-wrapper {
+    margin-bottom: 0;
+}
+
+.navigation-list {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    list-style: none;
+}
+
+.navigation-item {
+    font-weight: bold;
+    text-decoration: none;
+    margin: auto 12px;
+    font-size: 18px;
+}
+
 .contain {
     position: relative;
 }

@@ -1,7 +1,11 @@
 export interface IAction {
   type: string | null;
-  payload?: IResult;
+  likePayload?: IEpisode;
+  resultsPayload?: IResult;
+  payload?: number;
+  setLikedShowsPayload?: IEpisode[];
 }
+
 
 // externals: {tvrage: 18164, thetvdb: 81189, imdb: "tt0903747"}
 export interface IExternals {
@@ -79,22 +83,30 @@ export interface IData {
 
 }
 export interface IResult {
-  data: IData | null;
+  data?: IData | null;
 }
 
 export interface IState {
   results: IResult | null,
-  loading: boolean
+  loading: boolean,
+  liked: IEpisode[]
 }
 
 const INITIAL_STATE: IState = {
   results: null,
-  loading: false
+  loading: false,
+  liked: []
 }
-export default (state: IState = INITIAL_STATE, action: IAction ): IState => {
+export default (state: IState = INITIAL_STATE, action: IAction): IState => {
   switch(action.type) {
+    case 'SET_LIKED_SHOWS':
+      return { ...state, loading: false, liked: action.setLikedShowsPayload }
+    case 'LIKE_SHOW':
+      return { ...state, loading: false, liked: [ ...state.liked, action.likePayload ]}
+    case 'REMOVE_LIKE':
+      return { ...state, loading: false, liked: [...state.liked.filter(episode => episode.id !== action.payload )]}
     case 'FETCH_SHOWS':
-      return { ...state, results: action.payload, loading: false }
+      return { ...state, results: action.resultsPayload, loading: false }
     case 'CLEAR_SHOW':
       return { ...state, results: null, loading: false }
     case 'SET_LOADING':

@@ -1,15 +1,18 @@
 import { createContext } from 'react'
-import { IResult } from './TvReducer'
+import { IState, IEpisode } from './TvReducer'
 
-const Context = createContext({ fetchShow: (text:string): Promise<IResult | string> => {
-  return Promise.reject('Still Booting up')
-},
-  clearShow: (): void => { console.log('clear show action') },
-  setLoading: (): void => { console.log('load') },
-  state: {
-    results: null,
-    loading: false
-  }
-})
+interface IActions {
+  fetchShow: (text: string) => void | unknown
+  clearShow: () => void | unknown;
+  setLoading: () => void | unknown;
+  likeShow: (episode: IEpisode) => void | unknown;
+  removeLikeShow: (id: number) => void | unknown;
+  setLikedShows: (episodes: IEpisode[]) => void | unknown;
+}
+
+export interface IContext extends IActions {
+  state: IState;
+}
+const Context = createContext<IContext | null >(null)
 
 export default Context

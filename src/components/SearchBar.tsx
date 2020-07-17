@@ -19,7 +19,7 @@ const SearchBar = (): React.ReactElement => {
       context.fetchShow(text)
   }
   return (
-    <Grid container alignItems='flex-end' style={{ margin: '10px auto', justifyContent: 'center', width: '60%', minWidth: '440px' }}>
+    <Grid container alignItems='flex-end' style={{ margin: '10px auto', justifyContent: 'center', width: '60%', minWidth: '440px', zIndex: 10 }}>
       <Grid item xs={10}>
         <TextField
           fullWidth
