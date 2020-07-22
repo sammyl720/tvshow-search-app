@@ -46,15 +46,7 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
     return data._embedded.seasons.map(
       (season: ISeason): React.ReactFragment => {
         return (
-          <Grid
-            key={season.id}
-            style={{ margin: 'auto' }}
-            item
-            xs={12}
-            sm={12}
-            md={5}
-            lg={3}
-          >
+          <Grid key={season.id} item xs={12} sm={12} md={5} lg={3}>
             <Card style={{ marginTop: '12px' }}>
               {season.image ? (
                 <CardMedia
@@ -120,21 +112,12 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
         exact
         render={({ location, history, match }) => {
           return (
-            <div>
-              <div
-                style={{
-                  margin: 'auto',
-                  width: '90%',
-                  minWidth: '440px',
-                  padding: '12px'
-                }}
-              >
-                <Grid container spacing={1}>
-                  <Grid item xs={12}></Grid>
-                  {renderResults(results.data)}
-                </Grid>
-              </div>
-            </div>
+            <Grid container alignItems="center" justify="center" spacing={1}>
+              <Grid item xs={12}>
+                <h1>{results.data.name}</h1>
+              </Grid>
+              {renderResults(results.data)}
+            </Grid>
           )
         }}
       />

@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f5f1da;
+}
+
+#root {
+    margin: 0 auto;
+}
+
 .header {
     position: relative;
     top: 0;
@@ -37,9 +45,21 @@
     list-style: none;
 }
 
+.badge {
+    position: relative;
+    top: -10px;
+    right: -10px;
+    background: dodgerblue;
+    color: white;
+    padding: 4px 6px;
+    border-radius: 6px;
+}
+
 .navigation-item {
     font-weight: bold;
     text-decoration: none;
+    color: black;
+    font-family: 'Roboto', sans-serif;
     margin: auto 12px;
     font-size: 18px;
 }
