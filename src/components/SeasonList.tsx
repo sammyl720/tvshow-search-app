@@ -40,14 +40,28 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
 
   if (!results) {
     return (
-      <Typography
-        style={{ textAlign: 'center', margin: '12px auto' }}
-        variant="h4"
-        component="h1"
-        gutterBottom
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'space-evenly'
+        }}
       >
-        Search for your favorite tv show
-      </Typography>
+        <Typography
+          style={{ textAlign: 'center', margin: '12px auto' }}
+          variant="h4"
+          component="h1"
+          gutterBottom
+        >
+          Search for your favorite tv show
+        </Typography>
+        <img
+          src="assets/Tv-Image@2x.png"
+          alt="Tv Image"
+          style={{ maxWidth: '80vw', margin: 'auto' }}
+        />
+      </div>
     )
   }
   const renderResults = (data: IData) => {
@@ -124,8 +138,44 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
         render={({ location, history, match }) => {
           return (
             <Grid container alignItems="center" justify="center" spacing={1}>
-              <Grid item xs={12}>
-                <h1>{results.data.name}</h1>
+              <Grid item xs={12} alignItems="center" justify="center">
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    margin: '12px auto',
+                    padding: '5px',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.5)',
+                    alignItems: 'center',
+                    justifyContent: 'space-evenly',
+                    width: '100%'
+                  }}
+                >
+                  <Typography style={{ marginTop: '10px' }} variant="h5">
+                    {results.data.name}
+                  </Typography>
+                  {results.data.image['medium'] && (
+                    <img
+                      style={{
+                        maxWidth: '80%',
+                        margin: '10px auto',
+                        borderRadius: '5px'
+                      }}
+                      src={results.data.image['medium']}
+                      alt={results.data.name}
+                    />
+                  )}
+                  {results.data.summary && (
+                    <Typography variant="body1">
+                      <div
+                        style={{ maxWidth: '80%', margin: '10px auto' }}
+                        dangerouslySetInnerHTML={{
+                          __html: results.data.summary
+                        }}
+                      />
+                    </Typography>
+                  )}
+                </div>
               </Grid>
               {renderResults(results.data)}
             </Grid>
