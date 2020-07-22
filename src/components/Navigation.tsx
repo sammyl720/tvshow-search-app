@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core'
 import TvContext from '../context/TvContext/TvContext'
@@ -10,10 +10,13 @@ export type props = {
 
 const Navigation = ({ routes }: props): React.ReactElement => {
   const {
-    state: { liked }
+    state: { liked },
+    fetchLikedShows
   } = useContext(TvContext)
   const location = useLocation()
-
+  useEffect(() => {
+    fetchLikedShows()
+  }, [])
   return (
     <nav className="navigation-wrapper">
       <ul className="navigation-list">

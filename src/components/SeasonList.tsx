@@ -47,7 +47,7 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
       (season: ISeason): React.ReactFragment => {
         return (
           <Grid key={season.id} item xs={12} sm={12} md={5} lg={3}>
-            <Card style={{ marginTop: '12px' }}>
+            <Card style={{ margin: '12px auto auto auto' }}>
               {season.image ? (
                 <CardMedia
                   component="img"
