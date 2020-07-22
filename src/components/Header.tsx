@@ -21,7 +21,7 @@ export default function Header({
         justify="space-evenly"
         style={{ margin: 'auto 15px' }}
       >
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} lg={2}>
           <Link
             style={{
               textDecoration: 'none',
@@ -40,11 +40,11 @@ export default function Header({
             </h3>
           </Link>
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} lg={8}>
           <SearchBar />
         </Grid>
 
-        <Grid item xs={12} lg={3} style={{ textAlign: 'center' }}>
+        <Grid item xs={12} lg={2} style={{ textAlign: 'center' }}>
           <Navigation routes={[{ route: '/liked', name: 'Liked Episodes' }]} />
         </Grid>
       </Grid>

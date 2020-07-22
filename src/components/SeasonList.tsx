@@ -4,6 +4,7 @@ import Loader from './Loader'
 import { RouteComponentProps, Route, Switch, Link } from 'react-router-dom'
 import EpisodeList from './EpisodeList'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
+import getFormattedDate from '../utils/getFormattedDate'
 import { IData, ISeason } from '../context/TvContext/TvReducer'
 import {
   Card,
@@ -18,8 +19,10 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
   const {
     state: { results, loading, error }
   }: IContext = useContext(Context)
-  // console.log(props.match)
-  // const {path, url, ...match} = useRouteMatch()
+  // const todaysDate = getFormattedDate()
+  // console.log(todaysDate)
+  // const todaysSchedule = `http://api.tvmaze.com/schedule?country=US&date=${todaysDate}`
+  // console.log(todaysSchedule)
   const [url, setUrl] = useState('/')
   const [path, setPath] = useState('/')
   useEffect(() => {
@@ -37,9 +40,14 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
 
   if (!results) {
     return (
-      <h4 style={{ textAlign: 'center', margin: '12px auto' }}>
+      <Typography
+        style={{ textAlign: 'center', margin: '12px auto' }}
+        variant="h4"
+        component="h1"
+        gutterBottom
+      >
         Search for your favorite tv show
-      </h4>
+      </Typography>
     )
   }
   const renderResults = (data: IData) => {
@@ -55,6 +63,9 @@ const SeasonList = (props: RouteComponentProps): React.ReactElement => {
                   image={season.image.original}
                   title={`${data.name} Season ${season.number}`}
                   style={{ width: '100%' }}
+                  onClick={() => {
+                    props.history.push(url + season.id)
+                  }}
                 />
               ) : null}
               <CardContent>

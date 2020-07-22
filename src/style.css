@@ -43,6 +43,8 @@ body {
     padding: 10px;
     align-items: flex-start;
     list-style: none;
+    justify-content: space-between;
+    margin-left: auto;
 }
 
 .badge {
