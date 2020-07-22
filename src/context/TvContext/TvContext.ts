@@ -2,7 +2,8 @@ import { createContext } from 'react'
 import { IState, IEpisode } from './TvReducer'
 
 interface IActions {
-  fetchShow: (text: string) => void | unknown
+  fetchShow: (text: string) => void | unknown;
+  fetchSeason: (text: string) => void | unknown;
   clearShow: () => void | unknown;
   setLoading: () => void | unknown;
   likeShow: (episode: IEpisode) => void | unknown;

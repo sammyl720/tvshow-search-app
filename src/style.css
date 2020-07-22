@@ -19,7 +19,11 @@
 .header-title {
     font-size: 32px;
     font-weight: bold;
-    color: rgb(0, 0, 29);
+    background: radial-gradient( 50% 50% at 50% 50%, rgba(242, 90, 90, 0.54) 0%, rgba(29, 2, 2, 0.85) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-decoration: none;
 }
 
 .navigation-wrapper {
